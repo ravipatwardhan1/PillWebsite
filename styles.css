@@ -1,0 +1,22 @@
+body {
+    background-color: #808080; 
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    margin: 0 auto; /* Center the container horizontally */
+    width: 50%; /* Set the width of the container */
+    padding: 20px; /* Add some padding to the container */
+    background-color: #fff; /* White background for the form */
+    border-radius: 10px; /* Add rounded corners to the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow to the container */
+  }
+  
+  h1 {
+    text-align: center; /* Center the heading */
+  }
+  
+  form {
+    text-align: center; /* Center the form elements */
+  }
+  

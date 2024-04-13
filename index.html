@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Send Data to ESP32</title>
+  <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+  <div class="container">
+    <h1>Send Data to ESP32</h1>
+    <form id="dataForm">
+      <label for="time1Input">Time 1:</label>
+      <input type="time" id="time1Input" name="time1"><br><br>
+      <label for="time2Input">Time 2:</label>
+      <input type="time" id="time2Input" name="time2"><br><br>
+      <label for="time3Input">Time 3:</label>
+      <input type="time" id="time3Input" name="time3"><br><br>
+      <label for="phone1Input">Phone Number 1:</label>
+      <input type="text" id="phone1Input" name="phone1"><br><br>
+      <label for="phone2Input">Phone Number 2:</label>
+      <input type="text" id="phone2Input" name="phone2"><br><br>
+      <label for="phone3Input">Phone Number 3:</label>
+      <input type="text" id="phone3Input" name="phone3"><br><br>
+      <button type="button" onclick="sendData()">Send</button> <!-- Use JavaScript function -->
+    </form>
+  </div>
+
+  <script>
+    function sendData() {
+      // Collect data from form inputs
+      var time1 = document.getElementById("time1Input").value;
+      var time2 = document.getElementById("time2Input").value;
+      var time3 = document.getElementById("time3Input").value;
+      var phone1 = document.getElementById("phone1Input").value;
+      var phone2 = document.getElementById("phone2Input").value;
+      var phone3 = document.getElementById("phone3Input").value;
+
+      // Construct URL with data as query parameters
+      var url = "http://esp32_ip_address/data?";
+      url += "time1=" + encodeURIComponent(time1) + "&";
+      url += "time2=" + encodeURIComponent(time2) + "&";
+      url += "time3=" + encodeURIComponent(time3) + "&";
+      url += "phone1=" + encodeURIComponent(phone1) + "&";
+      url += "phone2=" + encodeURIComponent(phone2) + "&";
+      url += "phone3=" + encodeURIComponent(phone3);
+
+      // Send HTTP GET request to ESP32 server
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", url, true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          // Response received from ESP32
+          alert(xhr.responseText);
+        }
+      };
+      xhr.send();
+    }
+  </script>
+</body>
+</html>
