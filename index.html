@@ -20,6 +20,10 @@
       <input type="text" id="phone2Input" name="phone2"><br><br>
       <label for="phone3Input">Phone Number 3:</label>
       <input type="text" id="phone3Input" name="phone3"><br><br>
+      <label for="wifiSSIDInput">WiFi SSID:</label>
+      <input type="text" id="wifiSSIDInput" name="wifiSSID"><br><br>
+      <label for="wifiPasswordInput">WiFi Password:</label>
+      <input type="password" id="wifiPasswordInput" name="wifiPassword"><br><br>
       <button type="button" onclick="sendData()">Send</button> <!-- Use JavaScript function -->
     </form>
   </div>
@@ -27,6 +31,8 @@
   <script>
     function sendData() {
       // Collect data from form inputs
+      var wifiSSID = document.getElementById("wifiSSIDInput").value;
+      var wifiPassword = document.getElementById("wifiPasswordInput").value;
       var time1 = document.getElementById("time1Input").value;
       var time2 = document.getElementById("time2Input").value;
       var time3 = document.getElementById("time3Input").value;
@@ -36,6 +42,8 @@
 
       // Construct URL with data as query parameters
       var url = "http://esp32_ip_address/data?";
+      url += "wifiSSID=" + encodeURIComponent(wifiSSID) + "&";
+      url += "wifiPassword=" + encodeURIComponent(wifiPassword) + "&";
       url += "time1=" + encodeURIComponent(time1) + "&";
       url += "time2=" + encodeURIComponent(time2) + "&";
       url += "time3=" + encodeURIComponent(time3) + "&";
