@@ -24,23 +24,43 @@
       <button type="button" onclick="sendData()">Send</button> <!-- Use JavaScript function -->
     </form>
   </div>
-  <p>check</p>
 
   <script>
     function sendData() {
       // Collect data from form inputs
-      var time1Input = document.getElementById("time1Input").value.split(":");
-      var time2Input = document.getElementById("time2Input").value.split(":");
-      var time3Input = document.getElementById("time3Input").value.split(":");
+      var time1Input = document.getElementById("time1Input").value;
+      var time2Input = document.getElementById("time2Input").value;
+      var time3Input = document.getElementById("time3Input").value;
       
-      var time1Hour = time1Input[0];
-      var time1Minute = time1Input[1];
+      var time1Parts = time1Input.split(':');
+      var time1Hour = parseInt(time1Parts[0]);
+      var time1Minute = parseInt(time1Parts[1]);
+      var time2Parts = time2Input.split(':');
+      var time2Hour = parseInt(time2Parts[0]);
+      var time2Minute = parseInt(time2Parts[1]);
       
-      var time2Hour = time2Input[0];
-      var time2Minute = time2Input[1];
+      var time3Parts = time3Input.split(':');
+      var time3Hour = parseInt(time3Parts[0]);
+      var time3Minute = parseInt(time3Parts[1]);
       
-      var time3Hour = time3Input[0];
-      var time3Minute = time3Input[1];
+      // Convert AM/PM to 24-hour format
+      if (time1Input.includes("PM") && time1Hour != 12) {
+        time1Hour += 12;
+      } else if (time1Input.includes("AM") && time1Hour == 12) {
+        time1Hour = 0;
+      }
+      
+      if (time2Input.includes("PM") && time2Hour != 12) {
+        time2Hour += 12;
+      } else if (time2Input.includes("AM") && time2Hour == 12) {
+        time2Hour = 0;
+      }
+      
+      if (time3Input.includes("PM") && time3Hour != 12) {
+        time3Hour += 12;
+      } else if (time3Input.includes("AM") && time3Hour == 12) {
+        time3Hour = 0;
+      }
       
       var phone1 = document.getElementById("phone1Input").value;
       var phone2 = document.getElementById("phone2Input").value;
