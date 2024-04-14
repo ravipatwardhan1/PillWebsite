@@ -28,19 +28,31 @@
   <script>
     function sendData() {
       // Collect data from form inputs
-
-      var time1 = document.getElementById("time1Input").value;
-      var time2 = document.getElementById("time2Input").value;
-      var time3 = document.getElementById("time3Input").value;
+      var time1Input = document.getElementById("time1Input").value.split(":");
+      var time2Input = document.getElementById("time2Input").value.split(":");
+      var time3Input = document.getElementById("time3Input").value.split(":");
+      
+      var time1Hour = time1Input[0];
+      var time1Minute = time1Input[1];
+      
+      var time2Hour = time2Input[0];
+      var time2Minute = time2Input[1];
+      
+      var time3Hour = time3Input[0];
+      var time3Minute = time3Input[1];
+      
       var phone1 = document.getElementById("phone1Input").value;
       var phone2 = document.getElementById("phone2Input").value;
       var phone3 = document.getElementById("phone3Input").value;
 
       // Construct URL with data as query parameters
       var url = "http://192.168.1.123/data?";
-      url += "time1=" + encodeURIComponent(time1) + "&";
-      url += "time2=" + encodeURIComponent(time2) + "&";
-      url += "time3=" + encodeURIComponent(time3) + "&";
+      url += "time1Hour=" + encodeURIComponent(time1Hour) + "&";
+      url += "time1Minute=" + encodeURIComponent(time1Minute) + "&";
+      url += "time2Hour=" + encodeURIComponent(time2Hour) + "&";
+      url += "time2Minute=" + encodeURIComponent(time2Minute) + "&";
+      url += "time3Hour=" + encodeURIComponent(time3Hour) + "&";
+      url += "time3Minute=" + encodeURIComponent(time3Minute) + "&";
       url += "phone1=" + encodeURIComponent(phone1) + "&";
       url += "phone2=" + encodeURIComponent(phone2) + "&";
       url += "phone3=" + encodeURIComponent(phone3);
